@@ -4,7 +4,7 @@ We'll do that by adding a custom field to the Posts collection.
 Note that this requires our custom package to depend on nova:posts and nova:users.
 */
 
-Posts.addField(
+/* Posts.addField(
   {
     fieldName: 'color',
     fieldSchema: {
@@ -27,6 +27,44 @@ Posts.addField(
       publish: true // make that field public and send it to the client
     }
   }
+); */
+
+// adding a field to users table
+
+Users.addField(
+  {
+    fieldName: 'shortBio',
+    fieldSchema: {
+      type: String,
+      publish: true,
+      profile: true,
+      optional: true,
+      control: "text",
+      //label: "Tell us in 50 characters or less what you do (this will appear next to your name):",
+      max: 50,
+      insertableIf: Users.is.ownerOrAdmin,
+      editableIf: Users.is.ownerOrAdmin,
+      // autoform: {
+      //   rows: 5
+      // }
+    }
+  }
+);
+
+Users.addField(
+  {
+    fieldName: 'isVerified',
+    fieldSchema: {
+      type: Boolean,
+      //label: "Verified",
+      control: "checkbox",
+      optional: true,
+      publish: true,
+      profile: true,
+      insertableIf: Users.is.admin,
+      editableIf: Users.is.admin,
+    }
+  }
 );
 
 /*
@@ -37,3 +75,4 @@ so we also add our new field to that object:
 import PublicationUtils from 'meteor/utilities:smart-publications';
 
 PublicationUtils.addToFields(Posts.publishedFields.list, ["color"]);
+PublicationUtils.addToFields(Users.publishedFields.list, ["shortBio", "isVerified"]);

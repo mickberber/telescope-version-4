@@ -20,7 +20,15 @@ Package.onUse( function(api) {
   ], ['client', 'server']);
 
   api.addFiles([
-    'lib/stylesheets/custom.scss'
-  ], ['client']);
+  'lib/stylesheets/agency.css'
+], ['client']);
+
+api.addFiles([
+  'lib/stylesheets/bootstrap.css'
+], ['client']);
+
+api.addFiles([
+  'lib/stylesheets/custom.css'
+], ['client']);
 
 });
