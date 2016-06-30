@@ -12,14 +12,21 @@ const CustomUsersProfile = ({user, currentUser}) => {
   return (
   <div className="page users-profile">
       <Telescope.components.HeadTags url={Users.getProfileUrl(user, true)} title={Users.getDisplayName(user)} description={user.telescope.bio} />
-    <div className="profileSideBySide">
+    <div className="col-md-4">
       <Telescope.components.UsersAvatar user={user} size="xlarge"/>
     </div>
-    <div className="profileSideBySide">
+    <div className="col-md-4">
       <h2>{Users.getDisplayName(user)}</h2>
-      <p>{user.shortBio}</p>
-      <p>{user.telescope.bio}</p>
-      {twitterName ? <a href={"http://twitter.com/" + twitterName}>@{twitterName}</a> : null }
+      <p><i className="fa fa-arrow-circle-o-up fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{user.telescope.karma}</p>
+      <p><strong>Submitted Posts:</strong>&nbsp;&nbsp;&nbsp;{user.telescope.postCount}</p>
+      <p><strong>Submitted Comments:</strong>&nbsp;&nbsp;&nbsp;{user.telescope.commentCount}</p>
+    </div>
+    <div className="col-md-4">
+    {user.shortBio ? <p><strong>About Me:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.shortBio}</p> : null }
+      {user.location ? <p><strong>Lives In:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.location}</p> : null }
+      {user.expertise ? <p><strong>Is An Expert On:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.expertise}</p> : null }
+      {user.previousExperience ? <p><strong>Previous:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.previousExperience}</p> : null }
+      {user.education ? <p><strong>Education:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.education}</p> : null }
       {user.telescope.website ? <a href={user.telescope.website}>{user.telescope.website}</a> : null }
     </div>
     <h3><FormattedMessage id="users.posts"/></h3>
