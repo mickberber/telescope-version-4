@@ -40,7 +40,6 @@ Users.addField(
       profile: true,
       optional: true,
       control: "text",
-      //label: "Tell us in 50 characters or less what you do (this will appear next to your name):",
       max: 50,
       insertableIf: Users.is.ownerOrAdmin,
       editableIf: Users.is.ownerOrAdmin,
@@ -50,6 +49,83 @@ Users.addField(
     }
   }
 );
+
+Users.addField(
+  {
+    fieldName: 'location',
+    fieldSchema: {
+      type: String,
+      publish: true,
+      profile: true,
+      optional: true,
+      control: "text",
+      max: 50,
+      insertableIf: Users.is.ownerOrAdmin,
+      editableIf: Users.is.ownerOrAdmin,
+      // autoform: {
+      //   rows: 5
+      // }
+    }
+  }
+);
+
+Users.addField(
+  {
+    fieldName: 'expertise',
+    fieldSchema: {
+      type: String,
+      publish: true,
+      profile: true,
+      optional: true,
+      control: "text",
+      max: 50,
+      insertableIf: Users.is.ownerOrAdmin,
+      editableIf: Users.is.ownerOrAdmin,
+      // autoform: {
+      //   rows: 5
+      // }
+    }
+  }
+);
+
+Users.addField(
+  {
+    fieldName: 'previousExperience',
+    fieldSchema: {
+      type: String,
+      publish: true,
+      profile: true,
+      optional: true,
+      control: "text",
+      max: 100,
+      insertableIf: Users.is.ownerOrAdmin,
+      editableIf: Users.is.ownerOrAdmin,
+      // autoform: {
+      //   rows: 5
+      // }
+    }
+  }
+);
+
+Users.addField(
+  {
+    fieldName: 'education',
+    fieldSchema: {
+      type: String,
+      publish: true,
+      profile: true,
+      optional: true,
+      control: "text",
+      max: 50,
+      insertableIf: Users.is.ownerOrAdmin,
+      editableIf: Users.is.ownerOrAdmin,
+      // autoform: {
+      //   rows: 5
+      // }
+    }
+  }
+);
+
 
 Users.addField(
   {
@@ -75,4 +151,4 @@ so we also add our new field to that object:
 import PublicationUtils from 'meteor/utilities:smart-publications';
 
 PublicationUtils.addToFields(Posts.publishedFields.list, ["color"]);
-PublicationUtils.addToFields(Users.publishedFields.list, ["shortBio", "isVerified"]);
+PublicationUtils.addToFields(Users.publishedFields.list, ["shortBio", "isVerified","location","expertise","previousExperience","education"]);
